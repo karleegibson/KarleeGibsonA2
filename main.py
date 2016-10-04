@@ -8,7 +8,4 @@
 
 """
 
-# create your main program here,
-# starting with importing from your first assignemnt, something like:
-
 from KarleeGibsonA1 import load_items, save_items
