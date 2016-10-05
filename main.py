@@ -9,3 +9,19 @@
 """
 
 from KarleeGibsonA1 import load_items, save_items
+from item import Item
+# from itemlist import ItemList
+
+import csv
+
+MENU = "Menu: \nR - List required items \nC - List completed items \nA - Add new item \nM - Mark an item as " \
+       "completed \nQ - Quit"
+
+
+def main():
+    items = load_items()
+    print(items)
+
+main()
+
+
