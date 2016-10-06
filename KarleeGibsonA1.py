@@ -134,13 +134,13 @@ def load_items():
     and return items to the invoker list_of_items in main; close csv file"""
     items_file = open('items.csv', 'r')
     items_in_text = items_file.readlines()
+    items_file.close()
     items = []
     for item in items_in_text:
         item = item.strip().split(',')
         item[1] = float(item[1])  # change type from string to float
         item[2] = int(item[2])
         items.append(item)
-    items_file.close()
     return items
 
 
@@ -250,4 +250,5 @@ def save_items(list_of_items):
     items_file.close()
 
 
-main()
+if __name__ == "__main__":
+   main()

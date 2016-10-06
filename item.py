@@ -1,11 +1,16 @@
 class Item:
-    def __init__(self, name, price, priority):
+    def __init__(self, name, price, priority, completed):
         self.name = name
         self.price = price
         self.priority = priority
+        self.completed = completed
 
     def __str__(self):
-        return "{}, ${:.2f}, priority {} (completed)".format(self.name, self.price, self.priority)
+        completed = ''
+        if self.completed:
+            completed = '(completed)'
+        return "{}, ${:.2f}, priority {} {}".format(self.name, self.price, self.priority, completed)
 
     def complete_item(self):
-        self.priority = "completed"
+        self.completed = True
+

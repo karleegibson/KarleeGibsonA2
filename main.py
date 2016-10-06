@@ -20,8 +20,8 @@ MENU = "Menu: \nR - List required items \nC - List completed items \nA - Add new
 
 def main():
     items = load_items()
-    print(items)
+
+
+
 
 main()
-
-
