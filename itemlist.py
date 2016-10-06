@@ -1,9 +1,13 @@
 class ItemList():
-    def __init__(self, items, items_as_list):
-        self.items = items
+    def __init__(self):
+        self.items = []
 
-    def add_items_from_list(self, items_as_list):
-        print(items_as_list)
+    def __str__(self):
+        return str(self.items)
+
+    def add_items_from_list(self, items_as_lists):
+        print(items_as_lists)
+        for item in items_as_lists:
 
     def get_items(self):
         pass

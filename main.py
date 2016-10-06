@@ -14,8 +14,7 @@ from item import Item
 
 import csv
 
-MENU = "Menu: \nR - List required items \nC - List completed items \nA - Add new item \nM - Mark an item as " \
-       "completed \nQ - Quit"
+
 
 
 def main():
