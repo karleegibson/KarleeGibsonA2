@@ -1,4 +1,4 @@
-class ItemList():
+class ItemList:
     def __init__(self):
         self.items = []
 
@@ -6,8 +6,8 @@ class ItemList():
         return str(self.items)
 
     def add_items_from_list(self, items_as_lists):
-        print(items_as_lists)
         for item in items_as_lists:
+            self.items.append(item)
 
     def get_items(self):
         pass
@@ -15,7 +15,7 @@ class ItemList():
     def get_item_by_name(self):
         pass
 
-    def add_item(self):
+    def add_item(self, item):
         pass
 
     def get_total_price(self):
