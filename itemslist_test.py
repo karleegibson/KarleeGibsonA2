@@ -6,9 +6,10 @@ from KarleeGibsonA1 import load_items, save_items
 def main():
     items_as_lists = load_items()
     print(items_as_lists)
-    items = ItemList()
-    items.add_items_from_list(items_as_lists)
-    print(items)
+
+    #items = ItemList()
+    # items.add_items_from_list(items_as_lists)
+    # print(items)
 
     # items.add_items_from_list(items_as_lists)
     # print(items)
@@ -17,5 +18,8 @@ def main():
     # items.add_item(item)
     # print(item)
     # print(items)
+
+    for item in items_as_lists:
+
 
 main()
