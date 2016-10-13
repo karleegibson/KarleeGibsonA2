@@ -19,7 +19,12 @@ def main():
     # print(item)
     # print(items)
 
-    for item in items_as_lists:
+    item_list = ItemList()
+    print(item_list)
+    item_list.add_items_from_list(items_as_lists)
+    print(item_list)
+
+    print(item_list.get_item_by_name('Fish fingers'))
 
 
 main()

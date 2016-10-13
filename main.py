@@ -10,17 +10,22 @@
 
 from KarleeGibsonA1 import load_items, save_items
 from item import Item
-# from itemlist import ItemList
+from itemlist import ItemList
+from kivy.app import App
+from kivy.lang import Builder
 
 import csv
 
 
+class ShoppingList(App):
+    def build(self):
+        self.title = "Shopping List 2.0"
+        self.root = Builder.load_file('app.kv')
+        return self.root
+
+        items_as_lists = load_items()
+        items_as_lists
 
 
-def main():
-    items = load_items()
-
-
-
-
-main()
+# create and start the App running
+ShoppingList().run()
