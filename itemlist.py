@@ -13,20 +13,28 @@ class ItemList:
             self.items.append(Item(item[0], item[1], item[2], item[3]))
 
     def get_items(self):
-        pass
+        items_as_lists = []
+        for item in self.items:
+            items_as_lists.append([item.name, item.price, item.priority, item.completed])
+        return items_as_lists
 
     def get_item_by_name(self, name):
-        # return self.items[0]
         for item in self.items:
             if item.name == name:
                 return item
 
-    def add_item(self, item):
-        pass
+    def add_item(self, name, price, priority):
+        completed = 'r'
+        new_item = [name, price, priority, completed]
+        self.items.append(Item(new_item[0], new_item[1], new_item[2], new_item[3]))
 
     def get_total_price(self):
-        pass
+        total_price = 0
+        for item in self.items:
+            total_price += item.price
+        return "Total price: ${:.2f}".format(total_price)
 
     def sort_items(self):
         pass
+        # self.items.sort()
 

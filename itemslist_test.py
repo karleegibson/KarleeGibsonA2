@@ -5,9 +5,9 @@ from KarleeGibsonA1 import load_items, save_items
 
 def main():
     items_as_lists = load_items()
-    print(items_as_lists)
+    # print(items_as_lists)
 
-    #items = ItemList()
+    # items = ItemList()
     # items.add_items_from_list(items_as_lists)
     # print(items)
 
@@ -26,5 +26,13 @@ def main():
 
     print(item_list.get_item_by_name('Fish fingers'))
 
+    print(item_list.get_items())
+
+    item_list.add_item('Watch', 12.95, 2)
+    print(item_list)
+
+    print(item_list.get_items())
+
+    print(item_list.get_total_price())
 
 main()
