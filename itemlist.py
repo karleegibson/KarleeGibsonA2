@@ -1,4 +1,5 @@
 from item import Item
+from operator import attrgetter
 
 
 class ItemList:
@@ -35,6 +36,5 @@ class ItemList:
         return "Total price: ${:.2f}".format(total_price)
 
     def sort_items(self):
-        pass
-        # self.items.sort()
+        self.items.sort(key=attrgetter("priority"))
 

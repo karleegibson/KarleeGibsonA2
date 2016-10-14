@@ -35,4 +35,7 @@ def main():
 
     print(item_list.get_total_price())
 
+    item_list.sort_items()
+    print(item_list)
+
 main()
