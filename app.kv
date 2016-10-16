@@ -1,3 +1,54 @@
 BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.3
+            Button:
+                id: listRequiredButton
+                text: 'List Required'
+                on_release: app.press_add()
+            Button:
+                id: listCompletedButton
+                text: 'List Completed'
+                on_release: app.press_clear()
+            Button:
+                id: addNewItemButton
+                text: 'Add New Item...'
+            Button:
+                id: nameButton
+                text: 'Name:'
+            TextInput:
+                id: nameTextInput
+                text: ''
+            Button:
+                id: priceButton
+                text: 'Price:'
+            TextInput:
+                id: priceTextInput
+                text: ''
+            Button:
+                id: priorityButton
+                text: 'Priority:'
+            TextInput:
+                id: priorityTextInput
+                text: ''
+            Button:
+                id: addItemButton
+                text: 'Add Item'
+            Button:
+                id: clearButton
+                text: 'Clear'
+        GridLayout:
+            # this layout is populated with (button) widgets in app code
+            id: entriesBox
+            cols: 1
+            orientation: 'vertical'
+    Label:
+        id: statusLabel
+        size_hint_y: 0.1
+        text: 'Click items to mark them as completed'
+
 
 
