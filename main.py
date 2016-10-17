@@ -42,6 +42,7 @@ class ShoppingListApp(App):
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
         self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
+        self.root.ids.statusLabel.text = 'Click items to mark them as completed'
         return self.root
 
     def create_widgets(self):
@@ -53,25 +54,31 @@ class ShoppingListApp(App):
             if item.completed == 'r':
                 # create a button for each item entry
                 temp_button = Button(text=item.name)
-                temp_button.bind(on_release=self.press_entry)
+                temp_button.bind(on_release=self.complete_an_item)
                 if item.priority == 1:
                     temp_button.background_color = (255, 0, 0, 0.7)
                 elif item.priority == 2:
                     temp_button.background_color = (0, 0, 255, 0.7)
                 else:
                     temp_button.background_color = (0, 128, 0, 0.7)
-            # add the button to the "entriesBox" using add_widget()
+                    # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
-    def press_entry(self, instance):
+    def complete_an_item(self, instance):
         """
         Handler for pressing entry buttons
         :param instance: the Kivy button instance
         :return: None
         """
         # update status text
-        # item = instance.text
-        # self.status_text = "{}'s number is {}".format(item, self.item_list[item])
+        item = instance.text
+        item = self.item_list.get_item_by_name(item)
+        item = Item(item.name, item.price, item.priority, item.completed)
+        item.complete_item()
+        self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
+
+    def display_completed_items(self):
+        pass
 
     def clear_all(self):
         """
