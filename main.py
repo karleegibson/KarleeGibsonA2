@@ -41,6 +41,7 @@ class ShoppingListApp(App):
         self.title = "Shopping List 2.0"
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
+        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
         return self.root
 
     def create_widgets(self):
@@ -72,7 +73,7 @@ class ShoppingListApp(App):
         # item = instance.text
         # self.status_text = "{}'s number is {}".format(item, self.item_list[item])
 
-        # def clear_all(self):
+    def clear_all(self):
         """
         Clear all of the widgets that are children of the "entriesBox" layout widget
         :return:

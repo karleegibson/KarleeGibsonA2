@@ -32,7 +32,8 @@ class ItemList:
     def get_total_price(self):
         total_price = 0
         for item in self.items:
-            total_price += item.price
+            if item.completed == 'r':
+                total_price += item.price
         return "Total price: ${:.2f}".format(total_price)
 
     def sort_items(self):
