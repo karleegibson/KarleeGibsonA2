@@ -41,13 +41,13 @@ class ShoppingListApp(App):
         self.title = "Shopping List 2.0"
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
-        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
+        self.root.ids.priceOfCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Click items to mark them as completed'
         return self.root
 
     def create_widgets(self):
         """
-        Create buttons from dictionary entries and add them to the GUI
+        Create buttons from list of items and add them to the GUI
         :return: None
         """
         for item in self.item_list.items:
@@ -64,15 +64,32 @@ class ShoppingListApp(App):
                     # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
+    def display_required_items(self):
+        self.root.ids.entriesBox.clear_widgets()
+
+        for item in self.item_list.items:
+            if item.completed == 'r':
+                # create a button for each item entry
+                temp_button = Button(text=item.name)
+                temp_button.bind(on_release=self.complete_an_item)
+                if item.priority == 1:
+                    temp_button.background_color = (255, 0, 0, 0.7)
+                elif item.priority == 2:
+                    temp_button.background_color = (0, 0, 255, 0.7)
+                else:
+                    temp_button.background_color = (0, 128, 0, 0.7)
+                    # add the button to the "entriesBox" using add_widget()
+                self.root.ids.entriesBox.add_widget(temp_button)
+
     def display_completed_items(self):
         self.root.ids.entriesBox.clear_widgets()
-        self.root.ids.priceOrCompletedLabel.text = 'Showing completed items'
+        self.root.ids.priceOfCompletedLabel.text = 'Showing completed items'
 
         for item in self.item_list.items:
             if item.completed == 'c':
                 # create a button for each item entry
                 temp_button = Button(text=item.name)
-                # temp_button.bind(on_release=self.complete_an_item)
+                temp_button.bind(on_release=self.complete_an_item)
                 # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
@@ -93,7 +110,8 @@ class ShoppingListApp(App):
         item = self.item_list.get_item_by_name(item)
         item = Item(item.name, item.price, item.priority, item.completed)
         item.complete_item()
-        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
+        print(item)
+        self.root.ids.priceOfCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
 
 

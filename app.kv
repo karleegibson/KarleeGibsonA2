@@ -8,7 +8,7 @@ BoxLayout:
             Button:
                 id: listRequiredButton
                 text: 'List Required'
-                on_release: app.create_widgets()
+                on_release: app.display_required_items()
             Button:
                 id: listCompletedButton
                 text: 'List Completed'
@@ -47,7 +47,7 @@ BoxLayout:
             cols: 1
             orientation: 'vertical'
             Label:
-                id: priceOrCompletedLabel
+                id: priceOfCompletedLabel
                 size_hint_y: 0.3
                 text: ''
     Label:
