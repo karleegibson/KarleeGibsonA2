@@ -8,11 +8,11 @@ BoxLayout:
             Button:
                 id: listRequiredButton
                 text: 'List Required'
-                on_release: app.press_add()
+                on_release: app.create_widgets()
             Button:
                 id: listCompletedButton
                 text: 'List Completed'
-                on_release: app.press_clear()
+                on_release: app.display_completed_items()
             Button:
                 id: addNewItemButton
                 text: 'Add New Item...'
