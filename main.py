@@ -56,7 +56,7 @@ class ShoppingListApp(App):
                 temp_button = Button(text=item.name)
                 temp_button.bind(on_release=self.complete_an_item)
                 if item.priority == 1:
-                    temp_button.background_color = (255, 0, 0, 0.7)
+                    temp_button.background_color = (255, 0, 0, 0.7)  # change these values to be in between 0 and 1
                 elif item.priority == 2:
                     temp_button.background_color = (0, 0, 255, 0.7)
                 else:
@@ -73,7 +73,7 @@ class ShoppingListApp(App):
                 temp_button = Button(text=item.name)
                 temp_button.bind(on_release=self.complete_an_item)
                 if item.priority == 1:
-                    temp_button.background_color = (255, 0, 0, 0.7)
+                    temp_button.background_color = (255, 0, 0, 0.7)  # change these values to be in between 0 and 1
                 elif item.priority == 2:
                     temp_button.background_color = (0, 0, 255, 0.7)
                 else:
@@ -82,14 +82,14 @@ class ShoppingListApp(App):
                 self.root.ids.entriesBox.add_widget(temp_button)
 
     def display_completed_items(self):
-        self.root.ids.entriesBox.clear_widgets()
         self.root.ids.priceOfCompletedLabel.text = 'Showing completed items'
+        self.root.ids.entriesBox.clear_widgets()
 
         for item in self.item_list.items:
             if item.completed == 'c':
                 # create a button for each item entry
                 temp_button = Button(text=item.name)
-                temp_button.bind(on_release=self.complete_an_item)
+                temp_button.bind(on_release=self.complete_an_item) # change to method that displays item info
                 # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
@@ -108,11 +108,15 @@ class ShoppingListApp(App):
         item = instance.text
         self.root.ids.entriesBox.remove_widget(instance)
         item = self.item_list.get_item_by_name(item)
-        item = Item(item.name, item.price, item.priority, item.completed)
         item.complete_item()
         print(item)
         self.root.ids.priceOfCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
+
+    def add_new_item(self):
+        pass
+
+
 
 
 ShoppingListApp().run()
