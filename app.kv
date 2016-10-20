@@ -16,20 +16,20 @@ BoxLayout:
             Button:
                 id: addNewItemButton
                 text: 'Add New Item...'
-            Button:
-                id: nameButton
+            Label:
+                id: nameLabel
                 text: 'Name:'
             TextInput:
                 id: nameTextInput
                 text: ''
-            Button:
-                id: priceButton
+            Label:
+                id: priceLabel
                 text: 'Price:'
             TextInput:
                 id: priceTextInput
                 text: ''
-            Button:
-                id: priorityButton
+            Label:
+                id: priorityLabel
                 text: 'Priority:'
             TextInput:
                 id: priorityTextInput
@@ -37,9 +37,11 @@ BoxLayout:
             Button:
                 id: addItemButton
                 text: 'Add Item'
+                on_release: app.add_new_item()
             Button:
                 id: clearButton
                 text: 'Clear'
+                on_release: app.clear_text()
         BoxLayout:
             # this layout is populated with (button) widgets in app code
             id: entriesBox

@@ -89,7 +89,7 @@ class ShoppingListApp(App):
             if item.completed == 'c':
                 # create a button for each item entry
                 temp_button = Button(text=item.name)
-                temp_button.bind(on_release=self.complete_an_item) # change to method that displays item info
+                temp_button.bind(on_release=self.complete_an_item)  # change to method that displays item info
                 # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
@@ -114,9 +114,50 @@ class ShoppingListApp(App):
         self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
 
     def add_new_item(self):
-        pass
+        name = self.root.ids.nameTextInput.text
+        price = self.root.ids.priceTextInput.text
+        priority = self.root.ids.priorityTextInput.text
 
+        if name == '' or price == '' or priority == '':
+            self.root.ids.statusLabel.text = 'All fields must be completed'
+            return
+        try:
+            price = float(price)
+            if price < 0:
+                self.root.ids.statusLabel.text = 'Price must not be negative'
+                return
+        except ValueError:
+            self.root.ids.statusLabel.text = 'Please enter a valid number'
+            return
+        try:
+            priority = int(priority)
+            if priority not in (1, 2, 3):
+                self.root.ids.statusLabel.text = 'Priority must be 1, 2 or 3'
+                return
+        except ValueError:
+            self.root.ids.statusLabel.text = 'Please enter a valid number'
+            return
 
+        self.item_list.add_item(name, price, priority)
+        self.item_list.sort_items()
+        temp_button = Button(text=name)
+        temp_button.bind(on_release=self.complete_an_item)
 
+        if priority == 1:
+            temp_button.background_color = (255, 0, 0, 0.7)  # change these values to be in between 0 and 1
+        elif priority == 2:
+            temp_button.background_color = (0, 0, 255, 0.7)
+        else:
+            temp_button.background_color = (0, 128, 0, 0.7)
+        self.root.ids.entriesBox.add_widget(temp_button)
+
+        self.root.ids.nameTextInput.text = ''
+        self.root.ids.priceTextInput.text = ''
+        self.root.ids.priorityTextInput.text = ''
+
+    def clear_text(self):
+        self.root.ids.nameTextInput.text = ''
+        self.root.ids.priceTextInput.text = ''
+        self.root.ids.priorityTextInput.text = ''
 
 ShoppingListApp().run()
