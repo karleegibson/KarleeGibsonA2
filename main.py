@@ -41,7 +41,7 @@ class ShoppingListApp(App):
         self.title = "Shopping List 2.0"
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
-        self.root.ids.priceOfCompletedLabel.text = self.item_list.get_total_price()
+        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Click items to mark them as completed'
         return self.root
 
@@ -66,6 +66,7 @@ class ShoppingListApp(App):
 
     def display_required_items(self):
         self.root.ids.entriesBox.clear_widgets()
+        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
 
         for item in self.item_list.items:
             if item.completed == 'r':
@@ -82,14 +83,14 @@ class ShoppingListApp(App):
                 self.root.ids.entriesBox.add_widget(temp_button)
 
     def display_completed_items(self):
-        self.root.ids.priceOfCompletedLabel.text = 'Showing completed items'
+        self.root.ids.priceOrCompletedLabel.text = 'Showing completed items'
         self.root.ids.entriesBox.clear_widgets()
 
         for item in self.item_list.items:
             if item.completed == 'c':
                 # create a button for each item entry
                 temp_button = Button(text=item.name)
-                temp_button.bind(on_release=self.complete_an_item)  # change to method that displays item info
+                temp_button.bind(on_release=self.get_item_information)  # change to method that displays item info
                 # add the button to the "entriesBox" using add_widget()
                 self.root.ids.entriesBox.add_widget(temp_button)
 
@@ -97,6 +98,11 @@ class ShoppingListApp(App):
         Clear all of the widgets that are children of the "entriesBox" layout widget
         :return:
         """
+
+    def get_item_information(self, instance):
+        item_name = instance.text
+        item_name = self.item_list.get_item_by_name(item_name)
+        self.root.ids.statusLabel.text = str(item_name)
 
     def complete_an_item(self, instance):
         """
@@ -110,7 +116,7 @@ class ShoppingListApp(App):
         item = self.item_list.get_item_by_name(item)
         item.complete_item()
         print(item)
-        self.root.ids.priceOfCompletedLabel.text = self.item_list.get_total_price()
+        self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
 
     def add_new_item(self):
@@ -159,5 +165,8 @@ class ShoppingListApp(App):
         self.root.ids.nameTextInput.text = ''
         self.root.ids.priceTextInput.text = ''
         self.root.ids.priorityTextInput.text = ''
+
+    def on_stop(self):
+        print("Stop")
 
 ShoppingListApp().run()

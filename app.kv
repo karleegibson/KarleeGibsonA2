@@ -1,5 +1,9 @@
 BoxLayout:
     orientation: 'vertical'
+    Label:
+        id: priceOrCompletedLabel
+        size_hint_y: 0.1
+        text: ''
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -13,8 +17,8 @@ BoxLayout:
                 id: listCompletedButton
                 text: 'List Completed'
                 on_release: app.display_completed_items()
-            Button:
-                id: addNewItemButton
+            Label:
+                id: addNewItemLabel
                 text: 'Add New Item...'
             Label:
                 id: nameLabel
@@ -47,10 +51,10 @@ BoxLayout:
             id: entriesBox
             cols: 1
             orientation: 'vertical'
-            Label:
-                id: priceOfCompletedLabel
-                size_hint_y: 0.3
-                text: ''
+            # Label:
+                # id: priceOfCompletedLabel
+                # size_hint_y: 0.3
+                # text: ''
     Label:
         id: statusLabel
         size_hint_y: 0.1
