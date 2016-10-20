@@ -4,7 +4,7 @@
                                             Shopping List 2.0
         Plan
 
-    Link to GitHub:
+    Link to GitHub: https://github.com/karleegibson/KarleeGibsonA2
 
 """
 
