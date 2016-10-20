@@ -243,7 +243,7 @@ def complete_an_item(required_items):
 def save_items(list_of_items):
     """ open and items.csv; write each item in list_of_items to items.csv, for the purpose of overwriting original
     content; close csv file """
-    items_file = open('items.csv', 'w')
+    items_file = open('items.csv', 'w', newline='')
     items_writer = csv.writer(items_file)
     for item in list_of_items:
         items_writer.writerow(item)

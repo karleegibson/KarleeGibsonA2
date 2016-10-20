@@ -115,7 +115,6 @@ class ShoppingListApp(App):
         self.root.ids.entriesBox.remove_widget(instance)
         item = self.item_list.get_item_by_name(item)
         item.complete_item()
-        print(item)
         self.root.ids.priceOrCompletedLabel.text = self.item_list.get_total_price()
         self.root.ids.statusLabel.text = 'Completed: {}'.format(item)
 
@@ -167,6 +166,7 @@ class ShoppingListApp(App):
         self.root.ids.priorityTextInput.text = ''
 
     def on_stop(self):
-        print("Stop")
+        list_of_item_lists = self.item_list.get_items()
+        save_items(list_of_item_lists)
 
 ShoppingListApp().run()
