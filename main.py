@@ -10,7 +10,7 @@
     Link to GitHub:
 
     Link to GitHub original repository which includes all commits: https://github.com/karleegibson/KarleeGibsonA2
-        24 commits
+        27 commits
         Was not able to transfer these commits to classroom repository, only files
 
 """
