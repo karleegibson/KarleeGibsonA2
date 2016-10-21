@@ -7,7 +7,7 @@
         used in assignment 1 like selection, repetition, exceptions, lists and functions. The program will reuse some
         of the code in assignment one.
 
-    Link to GitHub:
+    Link to GitHub: https://github.com/CP1404-2016-2/a2-karleegibson
 
     Link to GitHub original repository which includes all commits: https://github.com/karleegibson/KarleeGibsonA2
         27 commits
